@@ -1,9 +1,13 @@
-# homebrew-tabsmith
+# homebrew-tap
 
-Homebrew formula for [tabsmith](https://github.com/PedroLaRosa/tabsmith) on macOS and Linux.
+Homebrew formulas by PedroLaRosa, for macOS and Linux.
+
+## tabsmith
+
+[tabsmith](https://github.com/PedroLaRosa/tabsmith): IDE-style autocomplete for your terminal.
 
 ```sh
-brew install pedrolarosa/tabsmith/tabsmith
+brew install pedrolarosa/tap/tabsmith
 tabsmith setup
 ```
 
