@@ -1,7 +1,6 @@
 class Tabsmith < Formula
   desc "IDE-style autocomplete for your terminal: dropdown menu and inline ghost text"
   homepage "https://github.com/PedroLaRosa/tabsmith"
-  version "1.0.0"
   license any_of: ["MIT", "Apache-2.0"]
 
   on_macos do
