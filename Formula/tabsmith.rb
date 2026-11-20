@@ -5,23 +5,23 @@ class Tabsmith < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/PedroLaRosa/tabsmith/releases/download/v1.0.0/tabsmith-darwin-arm64"
-      sha256 "8b87a068fcee65bed2359541a03f2a39e06f5f376d49c998a17bdd9303eb48a5"
+      url "https://github.com/PedroLaRosa/tabsmith/releases/download/v1.0.1/tabsmith-darwin-arm64"
+      sha256 "ff81b9cf52f2ed90f6297bb4025ecca5d446a78c579838063635846b26aa9674"
     end
     on_intel do
-      url "https://github.com/PedroLaRosa/tabsmith/releases/download/v1.0.0/tabsmith-darwin-x64"
-      sha256 "6fbfe6f983bcea58f439e152656588b18630eb2e06f3fede065b3f254f56f81b"
+      url "https://github.com/PedroLaRosa/tabsmith/releases/download/v1.0.1/tabsmith-darwin-x64"
+      sha256 "e3774d833f1357380657fbec092a5858d4628542829ebd08f371ac7243072ac9"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/PedroLaRosa/tabsmith/releases/download/v1.0.0/tabsmith-linux-arm64"
-      sha256 "3451b380c1c4de5efa6f35f9db08b4d1c3b22c53557781170c3f604b5b489edc"
+      url "https://github.com/PedroLaRosa/tabsmith/releases/download/v1.0.1/tabsmith-linux-arm64"
+      sha256 "85e8c22dae39d0ce9b80ab2e3bafd46c0d0d12589eaad1aa976d99df04f0b46f"
     end
     on_intel do
-      url "https://github.com/PedroLaRosa/tabsmith/releases/download/v1.0.0/tabsmith-linux-x64"
-      sha256 "10471eb59c30095c28dd522050e867a48446777fe97f78689aac78cdb05c950d"
+      url "https://github.com/PedroLaRosa/tabsmith/releases/download/v1.0.1/tabsmith-linux-x64"
+      sha256 "e44382ea5a0a21f83cd3b20fe87aa3003b754cee07a73d9a3a32d786092ce302"
     end
   end
 
@@ -36,9 +36,13 @@ class Tabsmith < Formula
       Homebrew updates this copy (brew upgrade tabsmith); it does not update itself.
       Before brew uninstall tabsmith, run: tabsmith uninstall
     EOS
-    # ponytail: tabsmith 1.0.0 writes the versioned Cellar path into the dotfiles on Linux; drop this line once a
-    # release writes the stable bin/ link instead.
-    text += "On Linux, run tabsmith doctor after each brew upgrade to repoint the shell integration.\n" if OS.linux?
+    # ponytail: tabsmith 1.0.0 wrote the versioned Cellar path into the dotfiles on Linux, so an upgrade from it, to
+    # whichever later version, needs one doctor run. Delete this once upgrades from 1.0.0 are unlikely.
+    if OS.linux?
+      text += <<~EOS
+        On Linux, after upgrading from tabsmith 1.0.0, run tabsmith doctor once to repoint the shell integration.
+      EOS
+    end
     text
   end
 
